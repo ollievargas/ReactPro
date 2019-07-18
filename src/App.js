@@ -15,7 +15,15 @@ class App extends Component {
   eventHandler = () => {
     this.setState ({
       userinput: [
-        {name: "Charlie"}
+        {name: "Godzilla!"}
+      ]
+    })
+  }
+
+  nameChangedHandler = (event) => {
+    this.setState({
+      userinput: [
+        {name: event.target.value}
       ]
     })
   }
@@ -24,11 +32,16 @@ class App extends Component {
 
 
   render() {
+    const style = {
+      backgroundColor: 'cyan',
+      padding: '9px'
+    }
     return (
       <div className="App">
         <h1>This is my first React App!!!</h1>
         <p>random text</p>
-        <Compo />
+        <button style={style} onClick={() => this.eventHandler("name")}>Switch Name</button>
+        <Compo name={this.state.userinput[0].name} changed={this.nameChangedHandler}/>
         <Compotwo name={this.state.userinput[0].name}/>
         <Compotwo />
         <Compotwo />
@@ -38,3 +51,4 @@ class App extends Component {
   }
 }
 export default App;
+
